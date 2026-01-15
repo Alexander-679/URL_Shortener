@@ -22,7 +22,6 @@ public class UrlController {
         return urlService.shortenUrl(request.get("url"));
     }
 
-    // ✅ FIXED redirect mapping
     @GetMapping("/r/{shortCode}")
     public void redirect(
             @PathVariable String shortCode,
