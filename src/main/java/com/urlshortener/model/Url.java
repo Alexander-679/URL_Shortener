@@ -20,7 +20,6 @@ public class Url {
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    // Constructors
     public Url() {
     }
 
@@ -29,7 +28,6 @@ public class Url {
         this.shortCode = shortCode;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
