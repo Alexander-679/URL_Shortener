@@ -15,7 +15,7 @@ public class UrlService {
         this.urlRepository = urlRepository;
     }
 
-    // Generate and save short URL
+    
     public Url shortenUrl(String originalUrl) {
         Url url = new Url();
         url.setOriginalUrl(originalUrl);
@@ -23,13 +23,12 @@ public class UrlService {
         return urlRepository.save(url);
     }
 
-    // Fetch original URL using short code
     public Url getOriginalUrl(String shortCode) {
         return urlRepository.findByShortCode(shortCode)
                 .orElseThrow(() -> new RuntimeException("Short URL not found"));
     }
 
-    // Generate unique short code
+
     private String generateShortCode() {
         return UUID.randomUUID().toString().substring(0, 6);
     }
