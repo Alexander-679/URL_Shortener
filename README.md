@@ -1,128 +1,123 @@
-URL Shortener
+# URL Shortener Backend System
 
-A simple and efficient URL Shortener built using Java Spring Boot, MySQL, and a modern HTML/CSS/JavaScript frontend.
-This application converts long URLs into short, shareable links and redirects users to the original URL when accessed.
+A RESTful backend application built using Java, Spring Boot, and MySQL that converts long URLs into short, shareable links and redirects users to the original URLs.
 
-1. Features
+---
 
-Convert long URLs into short URLs
+## Overview
 
-Fast redirection to original links
+This project demonstrates backend development fundamentals including REST API design, layered architecture, database integration, and request validation. It is designed to reflect real-world backend workflows and Software Development Life Cycle (SDLC) practices.
 
-Clean and modern user interface
+---
 
-Copy-to-clipboard functionality
+## Problem Statement
 
-Persistent storage using MySQL
+Long URLs are difficult to manage and share. The goal of this project is to provide a backend service that generates unique short URLs and reliably redirects users to the original long URLs.
 
-RESTful backend architecture
+---
 
-2. Tech Stack
+## Solution
 
-Backend
+The application exposes REST APIs to:
+- Generate a short URL for a given long URL
+- Redirect users from the short URL to the original URL
+- Persist URL mappings using a relational database
 
-Java
+---
 
-Spring Boot
+## Tech Stack
 
-Spring Data JPA
+- Language: Java  
+- Framework: Spring Boot  
+- Database: MySQL  
+- Build Tool: Maven  
+- API Testing: Postman  
 
-MySQL
+---
 
-Frontend
+## Features
 
-HTML
+- REST API for URL shortening
+- URL redirection handling
+- Persistent storage using MySQL
+- Layered architecture (Controller, Service, Repository)
+- Input validation and exception handling
 
-CSS
+---
 
-JavaScript (Fetch API)
+## Project Structure
 
-3. Project Structure
-url-shortener
-│
-├── controller     → Handles HTTP requests
-├── service        → Business logic
-├── repository     → Database access layer
-├── model          → Entity classes
-│
-├── static
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
-│
+src/
+├── controller/ # REST API endpoints
+├── service/ # Business logic
+├── repository/ # Database access layer
+├── model/ # Entity classes
 └── application.properties
 
-4. How It Works
+yaml
+Copy code
 
-The user enters a long URL in the UI
+---
 
-The frontend sends the URL to the backend using a REST API
+## API Endpoints
 
-The backend generates a unique short code
+| Endpoint | Method | Description |
+|--------|--------|------------|
+| `/api/shorten` | POST | Generate a short URL |
+| `/r/{shortCode}` | GET | Redirect to original URL |
 
-The original URL and short code are stored in the database
+### Sample Request
 
-When the short URL is accessed, the user is redirected to the original URL
-
-5. API Endpoints
-Shorten URL
 POST /api/shorten
-
-
-Request Body
+Content-Type: application/json
 
 {
-  "url": "https://www.example.com"
+"url": "https://example.com/very/long/url"
 }
 
-Redirect URL
-GET /r/{shortCode}
+yaml
+Copy code
 
-6. Database
+---
 
-The application uses MySQL for persistent storage.
-Tables are automatically created using Hibernate (JPA).
+## How to Run the Application
 
-7. How to Run the Project
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Alexander-679/URL_Shortener.git
+Create a MySQL database (for example: url_shortener_db).
 
-Clone the repository
+Update database credentials in application.properties.
 
-Configure MySQL credentials in application.properties
+Build and run the application:
 
-Start MySQL server
+bash
+Copy code
+mvn clean install
+mvn spring-boot:run
+Test the APIs using Postman or any REST client.
 
-Run the Spring Boot application
+Key Learnings
+REST API development using Spring Boot
 
-Open browser and visit:
+Database integration with MySQL
 
-http://localhost:8080/index.html
+Layered architecture and separation of concerns
 
-8. Key Learnings
+API testing and validation
 
-REST API design using Spring Boot
+Basic backend error handling strategies
 
-Layered architecture (Controller, Service, Repository)
+Future Improvements
+Add URL click analytics
 
-Database integration with JPA & Hibernate
+Support custom short URLs
 
-Frontend–Backend communication using Fetch API
+Implement URL expiration
 
-UI enhancement using modern CSS
-
-9. Future Enhancements
-
-URL validation
-
-Click count analytics
-
-Custom short URLs
-
-Link expiration
-
-User authentication
+Add unit and integration tests
 
 Author
-
 Sandrapati Alexander
-Java Backend Developer (Fresher)
-Passionate about building scalable backend applications and learning modern web technologies.
+Final-year B.Tech student (AI & Data Science)
+Aspiring Software Engineering Intern
